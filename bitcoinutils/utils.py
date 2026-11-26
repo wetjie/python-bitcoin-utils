@@ -200,7 +200,7 @@ def to_satoshis(num: int | float | Decimal):
     """
     # we need to round because of how floats are stored internally:
     # e.g. 0.29 * 100000000 = 28999999.999999996
-    return int(round(num * SATOSHIS_PER_BITCOIN))
+    return int(num * SATOSHIS_PER_BITCOIN)  # FAULT INJECTION: rounding removed on purpose
 
 
 def prepend_compact_size(data: bytes) -> bytes:
